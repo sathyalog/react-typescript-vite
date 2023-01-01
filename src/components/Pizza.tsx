@@ -1,25 +1,24 @@
-import React from 'react';
-
+import React from "react";
 
 interface Pizza {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
+  id: number;
+  name: string;
+  description: string;
+  price: number;
 }
 
 interface Props {
-    pizza: Pizza;
+  pizza: Pizza;
 }
 
-const Pizza: React.FC<Props> = ({pizza}) => {
+const Pizza: React.FC<Props> = ({ pizza }) => {
   return (
-    <li>
-        <h2>{pizza.name}</h2>
-        <p>{pizza.description}</p>
-        <p>{pizza.price}</p>
+    <li className="pizza-container">
+      <h2>{pizza.name}</h2>
+      <p>{pizza.description}</p>
+      <p>{pizza.price}</p>
     </li>
-  )
-}
+  );
+};
 
-export default Pizza
+export default Pizza;
