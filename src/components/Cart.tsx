@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FiShoppingCart } from "react-icons/fi";
+import { AppContext } from "./AppContext";
 
 interface Props {}
 
@@ -30,29 +31,39 @@ export class Cart extends Component<Props, State> {
       });
   };
 
+  /* we cannot use context hooks in class components and hence we are using render props here <AppContext.Consumer>{() => {}}</AppContext.Consumer>*/
   render() {
     return (
-      <div className="cartContainer">
-        <button
-          type="button"
-          className="cartButton"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-            this.handleClick(e)
-          }
-        >
-          <FiShoppingCart />
-          <span>2 Pizza(s)</span>
-        </button>
-        <div
-          className="cartDropDown"
-          style={{ display: this.state.isOpen ? "block" : "none" }}
-        >
-          <ul>
-            <li>Napoletana</li>
-            <li>Marinara</li>
-          </ul>
-        </div>
-      </div>
+      <AppContext.Consumer>
+        {(state) => {
+          return (
+            <div className="cartContainer">
+              <button
+                type="button"
+                className="cartButton"
+                onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+                  this.handleClick(e)
+                }
+              >
+                <FiShoppingCart />
+                <span>{state.cart.items.length} Pizza(s)</span>
+              </button>
+              <div
+                className="cartDropDown"
+                style={{ display: this.state.isOpen ? "block" : "none" }}
+              >
+                <ul>
+                  {state.cart.items.map((item) => (
+                    <li key={item.id}>
+                      {item.name} &times; {item.quantity}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        }}
+      </AppContext.Consumer>
     );
   }
 }
