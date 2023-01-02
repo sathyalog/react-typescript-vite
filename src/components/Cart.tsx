@@ -7,6 +7,10 @@ interface State {
   isOpen: boolean;
 }
 
+type HTMLElementEvent<T extends HTMLElement> = Event & {
+  target: T;
+};
+
 export class Cart extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -16,17 +20,25 @@ export class Cart extends Component<Props, State> {
     };
   }
 
+  handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    console.log(event.target);
+    if (event.target as HTMLElement)
+      this.setState({
+        isOpen: !this.state.isOpen,
+      });
+  };
+
   render() {
     return (
       <div className="cartContainer">
         <button
           type="button"
           className="cartButton"
-          onClick={() => {
-            this.setState({
-              isOpen: !this.state.isOpen,
-            });
-          }}
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            this.handleClick(e)
+          }
         >
           <FiShoppingCart />
           <span>2 Pizza(s)</span>
