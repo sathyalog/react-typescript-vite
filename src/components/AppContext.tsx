@@ -72,6 +72,11 @@ const reducer = (state: AppContextValue, action: AddToCartAction) => {
 
 export const useStateDispatch = () => {
   const dispatch = useContext(AppDispatchContext);
+  if (!dispatch) {
+    throw Error(
+      "useStateDispatch must be used inside AppDispatchContext.Provider"
+    );
+  }
   return dispatch;
 };
 
