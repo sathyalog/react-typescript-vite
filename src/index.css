@@ -92,3 +92,13 @@
 .cartButton svg {
   margin: 0 5px 0 0;
 }
+
+.splcontainer {
+  border: 1px solid red;
+  margin: 0 0 30px;
+  padding: 10px;
+}
+
+.splcontainer h2 {
+  margin: 0 0 10px;
+}

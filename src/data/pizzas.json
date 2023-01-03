@@ -22,5 +22,12 @@
       "name": "Margherita",
       "description": "Fresh tomatoes, mozzarella cheese, fresh basil, salt and extra-virgin olive oil.",
       "price": 14.99
+    },
+    {
+      "id": 5,
+      "name": "Margherita",
+      "description": "Fresh tomatoes, mozzarella cheese, fresh basil, salt and extra-virgin olive oil.",
+      "price": 10.99,
+      "specialOffer": true
     }
   ]
