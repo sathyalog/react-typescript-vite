@@ -32,7 +32,7 @@ const Pizza: React.FC<Props> = ({ pizza }) => {
       <h2>{pizza.name}</h2>
       <p>{pizza.description}</p>
       <p>{pizza.price}</p>
-      <button onClick={() => handleCart}>Add to cart</button>
+      <button onClick={handleCart}>Add to cart</button>
     </li>
   );
 };
