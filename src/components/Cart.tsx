@@ -36,6 +36,9 @@ export class Cart extends Component<Props, State> {
     return (
       <AppContext.Consumer>
         {(state) => {
+          const itemsCount = state.cart.items.reduce((sum, item) => {
+            return sum + item.quantity;
+          }, 0);
           return (
             <div className="cartContainer">
               <button
@@ -46,7 +49,7 @@ export class Cart extends Component<Props, State> {
                 }
               >
                 <FiShoppingCart />
-                <span>{state.cart.items.length} Pizza(s)</span>
+                <span>{itemsCount} Pizza(s)</span>
               </button>
               <div
                 className="cartDropDown"
